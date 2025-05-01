@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Trainer</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .muscle-groups {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .muscle-block {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            background-color: #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .muscle-block img {
+            max-width: 250px;
+            max-height: 250px;
+            margin-bottom: 5px;
+        }
+        .exercise-list-container {
+            display: flex; 
+            padding: 20px;
+        }
+        .exercise-list-container h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            margin-right: 15px;
+        }
+        .exercise-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative; /* For absolute positioning of data */
+        }
+        .exercise-item img {
+            width: 300px;
+            height: 200px;
+            margin-right: 15px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .exercise-info {
+            flex-grow: 1;
+        }
+        .exercise-data {
+            display: none; /* Initially hidden */
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10;
+            top: 0; /* Adjust as needed */
+            left: 12px; /* Adjust as needed */
+        }
+        .exercise-item:hover .exercise-data {
+            display: block;
+        }
+        .exercise-video {
+            width: 400px;
+            height: 300px;
+            margin-left: 15px;
+            display: flex;
+        }
+        /* Basic styling for other muscle groups - you'll expand on this */
+        #biceps-exercises, #triceps-exercises, #shoulders-exercises,
+        #chest-exercises, #back-exercises, #legs-exercises {
+            /* Styling for individual exercise lists */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Web Trainer</div>
+    </header>
+
+    <div class="container">
+        <div class="muscle-groups" id="muscleGroupBlocks">
+            <div class="muscle-block" onclick="showExercises('biceps')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_qFzjDpwvd7yn_AT8giHpQGt2vBI4rp7zocQLTukcFOf5YnJvheJme_zs4EOVuYDhT0o&usqp=CAU" alt="Biceps">
+                Biceps
+            </div>
+            <div class="muscle-block" onclick="showExercises('triceps')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnMf1mGLM9D8oy8lxf81WRcIAwa9QGqpH-0A&s" alt="Triceps">
+                Triceps
+            </div>
+            <div class="muscle-block" onclick="showExercises('shoulders')">
+                <img src="https://www.bosshunting.com.au/cdn-cgi/imagedelivery/izM8XxyLg9MD6py1ribxJw/www.bosshunting.com.au/2024/10/best-shoulder-exercises-for-men.jpg/w=1920" alt="Shoulders">
+                Shoulders
+            </div>
+            <div class="muscle-block" onclick="showExercises('chest')">
+                <img src="https://wow.yoh.mybluehost.me/wp-content/uploads/2020/10/chesty43_1600x800.jpg" alt="Chest">
+                Chest
+            </div>
+            <div class="muscle-block" onclick="showExercises('back')">
+                <img src="https://img.freepik.com/premium-photo/macho-handsome-with-muscular-torso-masculinity-sport-improve-yourself-man-muscular-athlete-attractive-guy-muscular-body-proud-excellent-shape-bodybuilder-concept-healthy-strong_474717-7109.jpg" alt="Back">
+                Back
+            </div>
+            <div class="muscle-block" onclick="showExercises('legs')">
+                <img src="https://img.freepik.com/premium-photo/caucasian-power-athletic-man-training-pumping-up-leg-quadriceps-muscles_174475-2417.jpg?w=360" alt="Legs">
+                Legs
+            </div>
+        </div>
+
+        <div id="biceps-exercises" class="exercise-list-container">
+            <h2>Biceps Exercises</h2>
+            <h3>Barbell Exercises </h3>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2020/02/bizepscurls-stehend-langhantel.png" alt="barbel Curl">
+                <div class="exercise-info">
+                    <h3>barbell Curl</h3>
+                    <p>Barbell Curl is a bicep-focused exercise that targets the upper arms</p>
+                       <p>primarily working the biceps brachii.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 8-12<br>
+                        Equipment: barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Curl.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="exercise-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ffcea9416aee143500ea103/1638183007710-QU75EX0AK58LRKXWS0NE/Narrow%20Grip%20Standing%20EZ%20Bar%20Curls.png" alt="EZ-barbell curl">
+                <div class="exercise-info">
+                    <h3>EZ-barbell Curl</h3>
+                    <p>The EZ curl bar reduces joint strain, allows for heavier lifting.</p>
+                    <p>keeps tension on the biceps brachii and brachioradialis for complete arm development.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://burnfit.io/wp-content/uploads/2023/11/EZB_CURL.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        <div class="exercise-item">
+            <img src="https://www.kettlebellkings.com/cdn/shop/articles/Preacher_Curl_Alternatives.png?v=1731324163" alt="preacher curl">
+            <div class="exercise-info">
+                <h3>preacher curl</h3>
+                <p> Preacher curls are done on an angled bench and focus on the biceps and forearms.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment: barbell
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://i.pinimg.com/originals/8f/03/87/8f03875e14e7d8687a575b648982352c.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <h3>Dumbell Exercise</h3>
+        <div class="exercise-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8v06jQvYYlS1wuqOBHiUJdEzYGODwds6U0KMPpmGI9SFjC5-YLlBX7nQg-uI3ezMmH9k&usqp=CAU" alt="Dumbbell curl">
+            <div class="exercise-info">
+                <h3>Dumbbell curl</h3>
+                <p>to build strength in your upper arm.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:Dumbell
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://i.pinimg.com/originals/7d/3c/de/7d3cdeed84c1c19ad372d5b25beffd08.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="exercise-item">
+            <img src="https://cdn.shopify.com/s/files/1/1876/4703/files/shutterstock_419477203_480x480.jpg?v=1636560233" alt="Hammer curl">
+            <div class="exercise-info">
+                <h3>Hammer curl</h3>
+                <p>target the long head of the bicep as well as the brachialis</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:Dumbell
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Hammer-Curl.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="exercise-item">
+            <img src="https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-zottman-curl.jpg" alt="Zottman curl">
+            <div class="exercise-info">
+                <h3>Zottman curl</h3>
+                <p>IMPROVE BOTH FOREARM AND GRIP STRENGTH DUE TO ENHANCED ECCENTRIC OVERLOAD OF THE FOREARM.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:Dumbell
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/04/zottman-curl.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <h3>cable Exercises</h3>
+        <div class="exercise-item">
+            <img src="https://images.squarespace-cdn.com/content/v1/5ffcea9416aee143500ea103/1638178897186-6VBYF3AB4T76O6GMG7M5/Standing%2BBiceps%2BCable%2BCurl.png5" alt="cable curl">
+            <div class="exercise-info">
+                <h3>cable curl</h3>
+                <p>The biceps cable curl is an isolation exercise for the biceps muscles in the upper arm.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:cable
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://i.pinimg.com/originals/c3/32/63/c33263e1a4a3fc85e58cd3c3c050a01c.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="exercise-item">
+            <img src="https://s3assets.skimble.com/assets/1819011/image_full.jpg" alt="cable Hammer curl">
+            <div class="exercise-info">
+                <h3>cable Hammer curl</h3>
+                <p> The cable machine creates constant tension on the targeted muscles</p>
+                <p>increasing resistance and overall training load.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:cable
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://i.pinimg.com/originals/eb/00/a6/eb00a611f43708505867f1a328b9e258.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="exercise-item">
+            <img src="https://liftmanual.com/wp-content/uploads/2023/04/cable-overhead-curl.jpg" alt="Overhead cable curl">
+            <div class="exercise-info">
+                <h3>Overhead cable curl</h3>
+                <p>helps isolate the biceps more effectively than traditional curls</p>
+                <p>reducing the involvement of secondary muscle groups and focusing on bicep.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:cable
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/04/overhead-cable-curl.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <h3>Bodyweight Exercises</h3>
+        <div class="exercise-item">
+            <img src="https://kinxlearning.com/cdn/shop/files/shutterstock_418630567_1400x.jpg?v=1690650014" alt="chin-up">
+            <div class="exercise-info">
+                <h3>chin-up</h3>
+                <p>Increases in muscle strength and definition — like other resistance exercises</p>
+                <p> chin-ups are great for increasing your strength.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:No Need
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/03/Chin-Up.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="exercise-item">
+            <img src="https://liftmanual.com/wp-content/uploads/2023/04/inverted-row.jpg" alt="Inverted rows">
+            <div class="exercise-info">
+                <h3>Inverted rows</h3>
+                <p>builds muscle and strength, and it's especially scaleable for beginners.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:barbell
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0XM9wHgPWLl5uWBJW98Hs8GV06aG5cuzohzmiXTc0lXaQHvWUlstaYiuOhmRSZoEjLXI&usqp=CAU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="exercise-item">
+            <img src="https://boxlifemagazine.com/wp-content/uploads/2024/02/TRX-Suspension-Curl.jpg" alt="TRX curl">
+            <div class="exercise-info">
+                <h3>TRX curl</h3>
+                <p>TRX Curl is a strength-boosting exercise targeting your biceps using body weight.</p>
+                <div class="exercise-data">
+                    Sets: 3-4<br>
+                    Reps: 10-15<br>
+                    Equipment:cable
+                </div>
+            </div>
+            <iframe class="exercise-video" src="https://boxlifemagazine.com/wp-content/uploads/2024/02/TRX-Suspension-Curl.jpg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <button onclick="goBack()">Back to Muscle Groups</button>
+    </div>
+
+        <div id="triceps-exercises" class="exercise-list-container">
+            <h2>Triceps Exercises</h2>
+            <h3>Barbell Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/ez-bar-close-grip-bench-press.jpg" alt="close-grip bench press">
+                <div class="exercise-info">
+                    <h3>close-grip bench press</h3>
+                    <p> helping to strengthen and develop the triceps muscles effectively.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://liftmanual.com/wp-content/uploads/2023/04/ez-bar-close-grip-bench-press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://adventurefitness.club/wp-content/uploads/2022/11/lying-triceps-extension-vs-skullcrusher.jpeg" alt="lying tricep extension">
+                <div class="exercise-info">
+                    <h3>lying tricep extension</h3>
+                    <p>The entire triceps muscle group in the upper arm</p>
+                    <p>triceps from the elbow all the way to the latissimus dorsi.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://media.tenor.com/ToAHkKHVQP4AAAAM/on-lying-triceps-al%C4%B1n-press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://homegymreview.co.uk/wp-content/uploads/exercises/00521101-Barbell-JM-Bench-Press_Upper-Arms_max-767x402.jpg" alt="JM press">
+                <div class="exercise-info">
+                    <h3>JM press</h3>
+                    <p>The JM Press can be a great accessory for building overall size and strength of your triceps.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2024/12/Barbell-JM-Press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>Dumbbell Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvFr2aNCuKFXqIBOW9XZ9-OrcJ9w_1IVoMxg&s" alt="Dumbbell overhead extension">
+                <div class="exercise-info">
+                    <h3>Dumbbell overhead extension</h3>
+                    <p>This exercise emphasizes the long head of the triceps more than other triceps exercises.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://burnfit.io/wp-content/uploads/2023/11/DB_TRI_EXT.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-standing-kickback.jpg" alt="Dumbbell kickbacks">
+                <div class="exercise-info">
+                    <h3>Dumbbell kickbacks</h3>
+                    <p>Targets the triceps muscles, helping to tone and strengthen the back of the arms.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/fd/a7/b0/fda7b0bb6a58d96cfe310674ed1b78dd.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_IND7t0Ybby2BDCoGK-9HAlcLfxbg48M-ZQ&s" alt="seated Dumbell extension">
+                <div class="exercise-info">
+                    <h3>seated Dumbbell extension</h3>
+                    <p>Targets the triceps muscles, helping to tone and strengthen them.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://media.tenor.com/V3J-mg9gH0kAAAAM/seated-dumbbell-triceps-extension.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>cable Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://www.dmoose.com/cdn/shop/articles/cable_Press_down.jpg?v=1693225553" alt="cable pushdown">
+                <div class="exercise-info">
+                    <h3>cable pushdown</h3>
+                    <p>Triceps pushdowns help strengthen these muscles, providing better support for the joints.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/a6/f8/51/a6f8518120f6f2860a8dc1a694c7f967.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.lyfta.app/_next/image?url=https%3A%2F%2Flyfta.app%2Fimages%2Fexercises%2F41151101.png&w=256&q=75" alt="overhead cable extension">
+                <div class="exercise-info">
+                    <h3>overhead cable extension</h3>
+                    <p>Targets the Long Head of the Triceps · Increases Triceps Flexibility · Improves Elbow Stability</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://svc.heygainz.com/storage/exercises/2292/411512-cable-overhead-tricep-extension-straight-bar-male.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://homegymreview.co.uk/wp-content/uploads/exercises/16091101-Cable-One-Arm-Side-Triceps-Pushdown_Upper-arms_max-scaled.jpg" alt="single arm cable pushdown">
+                <div class="exercise-info">
+                    <h3>single arm cable pushdown</h3>
+                    <p>Targets the triceps muscles, helping to build strength and definition in the back of the arms.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/f0/52/78/f05278a6dd2cc9861a34a9baf1b1b767.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjR_Pr_euiH9y3oPbEaufXu9rVQpz9uLDwjw&s" alt="lying cable extension">
+                <div class="exercise-info">
+                    <h3>lying cable extension</h3>
+                    <p>Targets the triceps muscles, helping to build strength and size in the back of the arms.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/09/cc/0c/09cc0ce505033f01f673c8500c679154.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>Bodyweight Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGUyKSpzpHu5dxetkfRK6eTaJ0m28zjZSOaA&s" alt="close-grip push-up">
+                <div class="exercise-info">
+                    <h3>close-grip push-up</h3>
+                    <p>Close-grip push-ups are a powerhouse move for upper body development.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://newlife.com.cy/wp-content/uploads/2019/11/02591301-Close-Grip-Push-up_Upper-Arms_360.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsLUHuOHWWSl9S8ICBDIMm9BIvV8mwX4pD7g&s" alt="dips">
+                <div class="exercise-info">
+                    <h3>Dips</h3>
+                    <p>Builds Upper Body Strength · Enhances Muscle Defintion · Improves Stability And Coordination ·</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Triceps-Dips.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSE8vBjzzEMuqZ-gViaIGETFqu5hG_bNa25A&s" alt="bench dips">
+                <div class="exercise-info">
+                    <h3>Bench dips</h3>
+                    <p>Bench dips can strengthen muscles in your triceps, chest, and shoulders. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/71/a5/8f/71a58fff86280c49002e0149f8cea3a4.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <button onclick="goBack()">Back to Muscle Groups</button>
+            </div>
+
+        <div id="shoulders-exercises" class="exercise-list-container">
+            <h2>Shoulders Exercises</h2>
+            <div class="exercise-item">
+                <img src="https://www.icfitnessclub.com/wp-content/uploads/2023/04/Standing-Overhead-Dumbbell-Shoulder-Press-1024x576.webp" alt="overhead press">
+                <div class="exercise-info">
+                    <h3>overhead Press</h3>
+                    <p> keep your upper body in shape. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell (or)dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2023/09/Standing-Dumbbell-Overhead-Press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/55e406fbe4b0b03c5e7543ae/1500701892849-8JSUG1C3SM40LOMAFO2X/Standing%20Alternate%20Vertical%20Dumbbell%20Front%20Raises" alt="front raises">
+                <div class="exercise-info">
+                    <h3>front raises</h3>
+                    <p>Front raises primarily strengthen your shoulder muscles (deltoids), but also work the upper chest (pectorals). </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell(or)cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Alternating-Dumbbell-Front-Raise.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2020/03/arnold-press-2.png" alt="Arnold press">
+                <div class="exercise-info">
+                    <h3>Arnold press</h3>
+                    <p>providing a more comprehensive lift - targeting various parts of the deltoids.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/a0/62/45/a06245ae35f261838e8aa7eb133c080d.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.endomondo.com/wp-content/uploads/2024/07/dumbbell-lateral-raise-guide.png" alt="lateral raises">
+                <div class="exercise-info">
+                    <h3>lateral raises</h3>
+                    <p>Lateral raises help you achieve defined shoulders and upper arms that have a rounded appearance. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell(or)cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lateral-Raise.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.dmoose.com/cdn/shop/articles/1_8db57df7-b8f2-412e-a364-745224090211.jpg?v=1647872727" alt="upright rows">
+                <div class="exercise-info">
+                    <h3>upright rows</h3>
+                    <p>their ability to target several crucial muscle groups in the upper body. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell(or)cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Upright-Row.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ffcea9416aee143500ea103/1637854057142-9SR2NT262PFV6IA63F2I/Standing%2BBent%2BOver%2BLateral%2BRaises.jpeg" alt="bent-over lateral raises">
+                <div class="exercise-info">
+                    <h3>Bent-over lateral raises</h3>
+                    <p> the bent-over lateral raise activates muscle groups throughout your body </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell(or)cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Bent-Over-Lateral-Raise.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-reverse-fly.jpg" alt="Reverse flyes">
+                <div class="exercise-info">
+                    <h3>Reverse flyes</h3>
+                    <p>Strong upper back muscles help balance your shoulder strength. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:machine(or)dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Reverse-Fly.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/04/cable-face-pull-muscles-1024x482.png" alt="face pulls">
+                <div class="exercise-info">
+                    <h3>Face pulls</h3>
+                    <p>rope face pulls contribute to increased strength and endurance in these areas. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2022/04/Cross-Cable-Face-Pull.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://cdn.shopify.com/s/files/1/0250/0362/2496/files/1451.png?v=1644926328" alt="cable rear delt flyes">
+                <div class="exercise-info">
+                    <h3>cable rear delt flyes</h3>
+                    <p> A strong rear delt makes your shoulder joint more stable. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:machine
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/cable-rear-delt-fly.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/12/dumbbell-push-press-muscles-1024x628.png" alt="bench dips">
+                <div class="exercise-info">
+                    <h3>push Press</h3>
+                    <p>BThe push press challenges your core muscles to stabilize the torso as you press the weight overhead. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell(or)dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2023/10/Dumbbell-Push-Press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <button onclick="goBack()">Back to Muscle Groups</button>
+            </div>
+        <div id="chest-exercises" class="exercise-list-container">
+            <h2>Chest Exercises</h2>
+            <h3>barbell Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2018/11/bankdruecken-flachbank-langhantel.png" alt="barbell bench press">
+                <div class="exercise-info">
+                    <h3>barbell bench press</h3>
+                    <p>Addresses strength discrepancies between the left and right sides of the body. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>Dumbbell Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://cdn.shopify.com/s/files/1/2623/4904/files/5_e25bb1c8-f21f-4d89-a707-be69442694b5_480x480.jpg?v=1734699681" alt="dumbbell bench press">
+                <div class="exercise-info">
+                    <h3>dumbbell bench Press</h3>
+                    <p>Addresses strength discrepancies between the left and right sides of the body.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Press.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2019/02/fliegende-flachbank-kurzhanteln-1.png" alt="dumbbell flyes">
+                <div class="exercise-info">
+                    <h3>dumbbell flyes</h3>
+                    <p>build strength in your chest, shoulder, and arm muscles. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/0b/cb/fc/0bcbfcfb99c70ae8ec9c7223b965d5ff.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://cdn.shopify.com/s/files/1/1876/4703/files/Dumbbell_Pullover_-_shutterstock_426449815_1024x1024.jpg?v=1686407686" alt="dumbbell pullover">
+                <div class="exercise-info">
+                    <h3>dumbbell pullover</h3>
+                    <p>Dumbbell pullovers can build upper body strength in your shoulders and back. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Pullover.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>cable Exercises</h3>
+            <div class="exercise-item">
+                <img src="https://i.pinimg.com/736x/bd/d0/8c/bdd08cc009b9e4a4bc9c4d59ff686689.jpg" alt="cable crossover">
+                <div class="exercise-info">
+                    <h3>cable crossover</h3>
+                    <p>Cable crossovers provide continuous tension and a greater range of motion. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/86/99/43/8699435cd110bbdbc4f06f56b6c4cf6e.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ffcea9416aee143500ea103/1638117988773-Y7BWLGWI6M1207HMODA6/Flat%2BCable%2BFly.jpeg" alt="flat cable flyes">
+                <div class="exercise-info">
+                    <h3>flat cable flyes</h3>
+                    <p>Flat cable flys involve extending your arms out to the sides in a fly motion using cable machines. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Lying-Cable-Fly.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/lever-pec-deck-fly.jpg" alt="pec deck flyes">
+                <div class="exercise-info">
+                    <h3>pec deck flyes</h3>
+                    <p>Targets the chest muscles, specifically the pectoralis major and minor. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:machine
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Pec-Deck-Fly.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://i.pinimg.com/736x/d9/49/c1/d949c1abe9893427b864e779b01a0f7a.jpg" alt="push-ups">
+                <div class="exercise-info">
+                    <h3>push-ups</h3>
+                    <p>push-ups can strengthen muscles in your triceps, chest, and shoulders. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/48/da/79/48da79042a1a23b3060e4fa684b8af90.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2020/02/dips.png" alt="dips">
+                <div class="exercise-info">
+                    <h3>Dips</h3>
+                    <p> dips can strengthen muscles in your triceps, chest, and shoulders. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Triceps-Dips.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <button onclick="goBack()">Back to Muscle Groups</button>
+            </div>
+
+        <div id="back-exercises" class="exercise-list-container">
+            <h2>Back Exercises</h2>
+            <div class="exercise-item">
+                <img src="https://anabolicaliens.com/cdn/shop/articles/199990.png?v=1645089103" alt="pull-ups">
+                <div class="exercise-info">
+                    <h3>pull-ups</h3>
+                    <p> They promote overall upper body muscle development . </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:hanging bar
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Pull-up.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.inspireusafoundation.org/wp-content/uploads/2022/11/chin-up-muscles-1024x724.png" alt="chin-ups">
+                <div class="exercise-info">
+                    <h3>chin-ups</h3>
+                    <p> They promote overall upper body muscle development. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:hanging bar
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/03/Chin-Up.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://kinxlearning.com/cdn/shop/files/exercise-33_1000x.jpg?v=1613518612" alt="lat pulldowns">
+                <div class="exercise-info">
+                    <h3>lat pulldowns</h3>
+                    <p>The lat pulldown is a fantastic exercise for strengthening the latissimus dorsi muscle. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:machine,cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://media.tenor.com/PVR9ra9tAwcAAAAM/pulley-pegada-aberta.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2020/02/rudern-langhantel.png" alt="barbell rows">
+                <div class="exercise-info">
+                    <h3>barbell rows</h3>
+                    <p>The barbell row helps build trunk strength that carries over into other exercises and your daily life. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://media.tenor.com/AYJ_bNXDvoUAAAAM/workout-muscles.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://apilyfta.com/static/GymvisualPNG/47301301-Dumbbell-Bent-over-Single-Arm-Row-(VERSION-2)_Back_720_small.png" alt="dumbbell rows">
+                <div class="exercise-info">
+                    <h3>dumbbell rows</h3>
+                    <p>The primary muscle group worked when doing dumbbell rows is the upper back. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Row.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/5ffcea9416aee143500ea103/1638352828989-47U5HIIXG66HCZEYTG73/T-Bar%2BRows.jpeg" alt="T-Bar rows">
+                <div class="exercise-info">
+                    <h3>T-Bar rows</h3>
+                    <p> T bar rows primarily target your lats. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Lever-T-bar-Row.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/inverted-row.jpg" alt="inverted-rows">
+                <div class="exercise-info">
+                    <h3>inverted-rows</h3>
+                    <p> it provides crucial support to the shoulder muscles overall upper body strength and stability.. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:hanging bar
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/d0/38/f5/d038f5afccadc69e2f8017603ff26018.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/rounded-back-extension.jpg" alt="back extension">
+                <div class="exercise-info">
+                    <h3>back extension</h3>
+                    <p>  Back extension exercises help strengthen key spinal support muscles . </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:leg support machine
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://gymvisual.com/img/p/2/0/8/2/5/20825.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.dmoose.com/cdn/shop/articles/main_image_304d7bbb-42b0-4258-9020-96274ff23949.jpg?v=1672847807" alt="Reverse hyperextension">
+                <div class="exercise-info">
+                    <h3>Reverse hyperextension</h3>
+                    <p> Reverse hyperextensions target the lower back, glutes, and hamstrings, enhancing strength and flexibility. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:leg support machine
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://i.pinimg.com/originals/a2/ee/69/a2ee69e377cd126bf5713c5aaf76b08c.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2020/02/deadlift-kreuzheben-800x448.png" alt="deadlifts">
+                <div class="exercise-info">
+                    <h3>deadlifts</h3>
+                    <p>Deadlifts will improve your back and core strength. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:barbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://www.kettlebellkings.com/cdn/shop/articles/barbell-deadlift-movement.gif?v=1692228918" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/cable-standing-face-pull.jpg" alt="face-pulls">
+                <div class="exercise-info">
+                    <h3>face-pulls</h3>
+                    <p> strengthening your upper back and giving you picture-perfect posture. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:cable
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://www.meridian-fitness.co.uk/wp-content/uploads/2025/02/Cable-Face-Pull.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <button onclick="goBack()">Back to Muscle Groups</button>
+            </div>
+
+        <div id="legs-exercises" class="exercise-list-container">
+            <h2>Legs Exercises</h2>
+            <div class="exercise-item">
+                <img src="https://training.fit/wp-content/uploads/2020/03/kniebeugen-800x448.png" alt="squats">
+                <div class="exercise-info">
+                    <h3>squats</h3>
+                    <p> Squats can help you build strength in your legs and core. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/05/bodyweight-squat-full-version.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://trainingstation.co.uk/cdn/shop/articles/Lunges-movment_d958998d-2a9f-430e-bdea-06f1e2bcc835_900x.webp?v=1741687877" alt="lunges">
+                <div class="exercise-info">
+                    <h3>lunges</h3>
+                    <p> Lunges increase muscle mass to build up strength and tone your body, especially your core, butt, and legs.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2023/09/bodyweight-walking-lunge.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://cdn.shopify.com/s/files/1/1497/9682/files/2_cd0bbc74-38de-4c1e-b271-c8a5470c996e.png?v=1646657658" alt="step-ups">
+                <div class="exercise-info">
+                    <h3>step-ups</h3>
+                    <p> Stepping up and down works the muscles in your calves, legs, and buttocks.</p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/12/Dumbeel-Step-Up.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://static.strengthlevel.com/images/exercises/glute-bridge/glute-bridge-800.jpg" alt="glute-bridges">
+                <div class="exercise-info">
+                    <h3>glute-bridges</h3>
+                    <p>  improve the vitality of muscles surrounding your spinal column. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2022/01/Dumbbell-Glute-Bridge.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-hip-thrust.jpg" alt="hip thrusts">
+                <div class="exercise-info">
+                    <h3>hip thrusts</h3>
+                    <p>  strengthens the muscles in the hip, buttocks, and quadriceps. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://burnfit.io/wp-content/uploads/2023/11/WEI_HIP_THRUST.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://kinxlearning.com/cdn/shop/files/shutterstock_425324797_1400x.jpg?v=1689195524" alt="leg extension">
+                <div class="exercise-info">
+                    <h3>leg extension</h3>
+                    <p>  Leg extensions target your quadriceps muscles, the largest muscles on the front of the thigh. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:machine
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRan7B4zWNagFoIb_gYbczrCXqOEA3-G4sC3w&s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://www.burnthefatinnercircle.com/members/images/203.jpg?cb=20250102040452" alt="hamstring curls">
+                <div class="exercise-info">
+                    <h3>hamstring curls</h3>
+                    <p> The hamstring curl is an excellent exercise for strengthening your back thigh muscles. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2022/10/Decline-Dumbbell-Leg-Curl.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="exercise-item">
+                <img src="https://static.strengthlevel.com/images/exercises/glute-kickback/glute-kickback-800.jpg" alt="glute kickbacks">
+                <div class="exercise-info">
+                    <h3>glute kickbacks</h3>
+                    <p> helps to strengthen your hamstrings, calves, and core. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:no need
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://lyfta.app/images/exercises/30351101.png" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+
+            <div class="exercise-item">
+                <img src="https://liftmanual.com/wp-content/uploads/2023/04/bodyweight-standing-calf-raise.jpg" alt="calf raises">
+                <div class="exercise-info">
+                    <h3>calf raises</h3>
+                    <p>  calf exercises help improve stamina and endurance. </p>
+                    <div class="exercise-data">
+                        Sets: 3-4<br>
+                        Reps: 10-15<br>
+                        Equipment:dumbbell
+                    </div>
+                </div>
+                <iframe class="exercise-video" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Calf-Raise.gif" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <button onclick="goBack()">Back to Muscle Groups</button>
+            <div>
+                
+            </div>
+           
+            </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const muscleGroupBlocks = document.getElementById('muscleGroupBlocks');
+            const allExerciseLists = document.querySelectorAll('.exercise-list-container');
+    
+            // Ensure all exercise lists are hidden on initial load
+            allExerciseLists.forEach(list => {
+                list.style.display = 'none';
+            });
+            window.showExercises = function (muscleGroup) {
+                // Hide the muscle group blocks
+                muscleGroupBlocks.style.display = 'none';
+    
+                // Hide all exercise lists
+                allExerciseLists.forEach(list => {
+                    list.style.display = 'none';
+                });
+    
+                // Show the selected exercise list
+                const selectedList = document.getElementById(muscleGroup + '-exercises');
+                if (selectedList) {
+                    selectedList.style.display = 'block';
+                }
+            };
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+        const muscleGroupBlocks = document.getElementById('muscleGroupBlocks');
+        const allExerciseLists = document.querySelectorAll('.exercise-list-container');
+
+        // Ensure all exercise lists are hidden on initial load
+        allExerciseLists.forEach(list => {
+            list.style.display = 'none';
+        });
+
+        window.showExercises = function (muscleGroup) {
+            // Hide the muscle group blocks
+            muscleGroupBlocks.style.display = 'none';
+
+            // Hide all exercise lists
+            allExerciseLists.forEach(list => {
+                list.style.display = 'none';
+            });
+
+            // Show the selected exercise list
+            const selectedList = document.getElementById(muscleGroup + '-exercises');
+            if (selectedList) {
+                selectedList.style.display = 'block';
+            }
+        };
+
+        window.goBack = function () {
+            // Hide all exercise lists
+            allExerciseLists.forEach(list => {
+                list.style.display = 'none';
+            });
+
+            // Show the muscle group blocks
+            muscleGroupBlocks.style.display = 'block';
+        };
+    });
+    </script>
+    
+</body>
+</html>
