@@ -68,41 +68,43 @@
     .exercise-item {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-wrap: nowrap;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
-  padding: 15px;
-  margin: 15px auto;
-  max-width: 1000px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .exercise-item img {
-  width: 100%;
-  max-width: 250px;
+  width: 250px;
   height: auto;
   border-radius: 5px;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .exercise-info {
   flex: 1;
   min-width: 200px;
+  max-width: 400px;
 }
 
 .exercise-video img,
 .exercise-video video {
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   height: auto;
   border-radius: 5px;
+  flex-shrink: 0;
 }
 
-/* Mobile/tablet responsiveness */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
   .exercise-item {
     flex-direction: column;
@@ -113,11 +115,13 @@
   .exercise-item img,
   .exercise-video img,
   .exercise-video video {
-    max-width: 90%;
+    width: 90%;
+    max-width: 100%;
   }
 
   .exercise-info {
     width: 100%;
+    max-width: 90%;
     margin-top: 10px;
   }
 }
