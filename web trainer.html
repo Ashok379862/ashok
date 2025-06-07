@@ -65,84 +65,58 @@
       text-align: center;
       margin-bottom: 15px;
     }
-
     .exercise-item {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 5px;
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-    }
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  gap: 20px; /* space between items */
+}
 
-    .exercise-item img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      margin-right: 15px;
-      object-fit: cover;
-      border-radius: 5px;
-    }
+.exercise-item img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+}
 
-    .exercise-info {
-      flex: 1;
-      min-width: 250px;
-      margin-top: 10px;
-    }
+.exercise-info {
+  flex: 1;
+  min-width: 200px;
+}
 
-    .exercise-data {
-      display: none;
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 5px;
-      z-index: 10;
-      top: 0;
-      left: 12px;
-    }
+.exercise-video {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 5px;
+}
 
-    .exercise-item:hover .exercise-data {
-      display: block;
-    }
+/* Responsive for tablets and smaller */
+@media (max-width: 768px) {
+  .exercise-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-    .exercise-video {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      display: flex;
-      margin-top: 10px;
-    }
+  .exercise-item img,
+  .exercise-video {
+    max-width: 90%;
+  }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Media Queries for Responsiveness */
-    @media (max-width: 768px) {
-      .exercise-item {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .exercise-item img,
-      .exercise-video {
-        width: 100%;
-        margin-right: 0;
-      }
-
-      .exercise-info {
-        margin-top: 10px;
-        text-align: center;
-      }
-
+  .exercise-info {
+    width: 100%;
+  }
+}
       .muscle-block {
         width: 90%;
         height: auto;
