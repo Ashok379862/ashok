@@ -67,17 +67,18 @@
     }
     .exercise-item {
   display: flex;
-  flex-wrap: wrap; /* allows wrapping on small screens */
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100%;
+  gap: 20px;
+  padding: 15px;
+  margin: 15px auto;
   max-width: 1000px;
-  box-sizing: border-box;
-  gap: 20px; /* space between items */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .exercise-item img {
@@ -93,14 +94,15 @@
   min-width: 200px;
 }
 
-.exercise-video {
+.exercise-video img,
+.exercise-video video {
   width: 100%;
   max-width: 300px;
   height: auto;
   border-radius: 5px;
 }
 
-/* Responsive for tablets and smaller */
+/* Mobile/tablet responsiveness */
 @media (max-width: 768px) {
   .exercise-item {
     flex-direction: column;
@@ -109,12 +111,14 @@
   }
 
   .exercise-item img,
-  .exercise-video {
+  .exercise-video img,
+  .exercise-video video {
     max-width: 90%;
   }
 
   .exercise-info {
     width: 100%;
+    margin-top: 10px;
   }
 }
       .muscle-block {
